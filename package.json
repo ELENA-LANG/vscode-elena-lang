@@ -21,6 +21,7 @@
   "categories": [
     "Programming Languages"
   ],
+  "l10n": "./l10n",
   "contributes": {
     "languages": [{
       "id": "elena",
@@ -33,5 +34,15 @@
       "scopeName": "source.elena-lang",
       "path": "./syntaxes/elena.tmLanguage.json"
     }]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile", 
+  },
+  "devDependencies": {
+    "typescript": "^5.4.2",
+    "@vscode/l10n-dev": "^0.0.18"
+  },
+  "dependencies": {
+    "@vscode/l10n": "^0.0.10"
   }
 }
