@@ -16,33 +16,46 @@
   },
   "keywords": [
     "elena-lang",
-    "ELENA",
+    "ELENA"
   ],
   "categories": [
     "Programming Languages"
   ],
   "l10n": "./l10n",
   "contributes": {
-    "languages": [{
-      "id": "elena",
-      "aliases": ["ELENA", "elena"],
-      "extensions": ["l", "prj" ],
-      "configuration": "./language-configuration.json"
-    }],
-    "grammars": [{
-      "language": "elena",
-      "scopeName": "source.elena-lang",
-      "path": "./syntaxes/elena.tmLanguage.json"
-    }]
+    "languages": [
+      {
+        "id": "elena",
+        "aliases": [
+          "ELENA",
+          "elena"
+        ],
+        "extensions": [
+          "l",
+          "prj"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "elena",
+        "scopeName": "source.elena-lang",
+        "path": "./syntaxes/elena.tmLanguage.json"
+      }
+    ]
   },
   "scripts": {
-    "vscode:prepublish": "npm run compile", 
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./"
   },
   "devDependencies": {
-    "typescript": "^5.4.2",
-    "@vscode/l10n-dev": "^0.0.18"
+    "@vscode/l10n-dev": "^0.0.18",
+    "typescript": "^5.4.2"
   },
   "dependencies": {
-    "@vscode/l10n": "^0.0.10"
+    "@vscode/l10n": "^0.0.10",
+    "vscode": "^1.1.37"
   }
 }
