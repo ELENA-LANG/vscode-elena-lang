@@ -43,7 +43,17 @@
         "scopeName": "source.elena-lang",
         "path": "./syntaxes/elena.tmLanguage.json"
       }
-    ]
+    ],
+    "configuration": {
+      "title": "ELENA",
+      "properties": {
+        "elena.executablePath": {
+          "scope": "resource",
+          "type": "string",
+          "description": "Custom path to ELENA compiler executable (`elena-cli`)."
+        },
+      }
+    }
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",
