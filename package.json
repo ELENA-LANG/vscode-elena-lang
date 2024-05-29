@@ -51,7 +51,7 @@
           "scope": "resource",
           "type": "string",
           "description": "Custom path to ELENA compiler executable (`elena-cli`)."
-        },
+        }
       }
     }
   },

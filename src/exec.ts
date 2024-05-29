@@ -1,7 +1,7 @@
 import { window, Terminal } from 'vscode';
 import { getExecCommand } from './utils';
 
-let terminalWindow: Terminal = null;
+let terminalWindow: Terminal | undefined = undefined;
 
 export function compileInTerminal(args: string[]): void {
 	const execFile = getExecCommand();
