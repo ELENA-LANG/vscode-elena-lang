@@ -53,6 +53,21 @@
           "description": "Custom path to ELENA compiler executable (`elena-cli`)."
         }
       }
+    },
+    "commands": [
+      {
+        "command": "elena.compileSingleFile",
+        "title": "Compile the current file",
+        "category": "ELENA"
+      }
+    ],
+    "menus": {
+      "commandPalette": [
+        {
+          "command": "elena.compileSingleFile",
+          "when": "editorLangId == elena"
+        }
+      ] 
     }
   },
   "scripts": {
@@ -60,6 +75,12 @@
     "compile": "tsc -p ./",
     "watch": "tsc -watch -p ./"
   },
+  "activationEvents": [
+    "workspaceContains:**/*.l",
+    "onLanguage:elena",
+    "onCommand:elena.compileSingleFile"
+  ],
+  "main": "./dist/main.js",
   "devDependencies": {
     "@vscode/l10n-dev": "^0.0.18",
     "typescript": "^5.4.2"

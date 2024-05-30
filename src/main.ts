@@ -10,6 +10,9 @@ const cmds : Array<[string, () => void]> = [
  * @param context The extension context
  */
 export function activate(context: vscode.ExtensionContext): void {
+        let orange = vscode.window.createOutputChannel("elena");
+	orange.appendLine("Test.");
+
 	for (var cmd of cmds) {
 		const disposable = vscode.commands.registerCommand(cmd[0], cmd[1]);
 		context.subscriptions.push(disposable);
