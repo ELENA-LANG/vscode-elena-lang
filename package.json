@@ -1,0 +1,102 @@
+{
+  "name": "vscode-elena-lang",
+  "displayName": "ELENA",
+  "description": "ELENA Language support for Visual Studio Code",
+  "icon": "icons/icon.png",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.89.0"
+  },
+  "bugs": {
+    "url": "https://github.com/ELENA-LANG/vscode-elena-lang/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ELENA-LANG/vscode-elena-lang"
+  },
+  "keywords": [
+    "elena-lang",
+    "ELENA"
+  ],
+  "categories": [
+    "Programming Languages"
+  ],
+  "l10n": "./l10n",
+  "contributes": {
+    "languages": [
+      {
+        "id": "elena",
+        "aliases": [
+          "ELENA",
+          "elena"
+        ],
+        "extensions": [
+          "l",
+          "prj"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "elena",
+        "scopeName": "source.elena-lang",
+        "path": "./syntaxes/elena.tmLanguage.json"
+      }
+    ],
+    "configuration": {
+      "title": "ELENA",
+      "properties": {
+        "elena.executablePath": {
+          "scope": "resource",
+          "type": "string",
+          "description": "Custom path to ELENA compiler executable (`elena-cli`)."
+        }
+      }
+    },
+    "commands": [
+      {
+        "command": "elena.compileSingleFile",
+        "title": "Compile the current file",
+        "category": "ELENA"
+      },
+      {
+        "command": "elena.compileProject",
+        "title": "Compile the current project",
+        "category": "ELENA"
+      }
+    ],
+    "menus": {
+      "commandPalette": [
+        {
+          "command": "elena.compileSingleFile",
+          "when": "editorLangId == elena"
+        },
+        {
+          "command": "elena.compileProject",
+          "when": "editorLangId == elena"
+        }
+      ] 
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./"
+  },
+  "activationEvents": [
+    "workspaceContains:**/*.l",
+    "onLanguage:elena",
+    "onCommand:elena.compileSingleFile",
+    "onCommand:elena.compileProject"
+  ],
+  "main": "./dist/main.js",
+  "devDependencies": {
+    "@vscode/l10n-dev": "^0.0.18",
+    "typescript": "^5.4.2",
+    "vscode": "^1.1.37"
+  },
+  "dependencies": {
+    "@vscode/l10n": "^0.0.10"
+  }
+}
