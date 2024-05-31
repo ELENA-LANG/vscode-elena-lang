@@ -2,7 +2,8 @@ import * as vscode from 'vscode';
 import * as commands from './commands';
 
 const cmds : Array<[string, () => void]> = [
-	[ 'elena.compileSingleFile', commands.compileSingleFile ]
+	[ 'elena.compileSingleFile', commands.compileSingleFile ],
+	[ 'elena.compileProject', commands.compileProject ]
 ];
 
 /**
@@ -10,8 +11,8 @@ const cmds : Array<[string, () => void]> = [
  * @param context The extension context
  */
 export function activate(context: vscode.ExtensionContext): void {
-        let orange = vscode.window.createOutputChannel("elena");
-	orange.appendLine("Test.");
+        let output = vscode.window.createOutputChannel("elena");
+	output.appendLine("Starting ELENA vscode extension..");
 
 	for (var cmd of cmds) {
 		const disposable = vscode.commands.registerCommand(cmd[0], cmd[1]);

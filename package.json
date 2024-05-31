@@ -59,12 +59,21 @@
         "command": "elena.compileSingleFile",
         "title": "Compile the current file",
         "category": "ELENA"
+      },
+      {
+        "command": "elena.compileProject",
+        "title": "Compile the current project",
+        "category": "ELENA"
       }
     ],
     "menus": {
       "commandPalette": [
         {
           "command": "elena.compileSingleFile",
+          "when": "editorLangId == elena"
+        },
+        {
+          "command": "elena.compileProject",
           "when": "editorLangId == elena"
         }
       ] 
@@ -78,7 +87,8 @@
   "activationEvents": [
     "workspaceContains:**/*.l",
     "onLanguage:elena",
-    "onCommand:elena.compileSingleFile"
+    "onCommand:elena.compileSingleFile",
+    "onCommand:elena.compileProject"
   ],
   "main": "./dist/main.js",
   "devDependencies": {
