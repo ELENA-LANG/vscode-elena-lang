@@ -4,6 +4,7 @@
   "description": "ELENA Language support for Visual Studio Code",
   "icon": "icons/icon.png",
   "version": "0.0.2",
+  "publisher": "ELENA-LANG",
   "engines": {
     "vscode": "^1.91.0"
   },
@@ -68,14 +69,70 @@
         "icon": "$(run)"
       }
     ],
+    "debuggers": [
+      {
+        "type": "ldbg",
+        "languages": [
+          "elena"
+        ],
+        "label": "ELENA Debugger",
+        "windows": {
+          "program": "C:/Alex/elena-lang/bin/elena-dpa.exe"
+        },
+        "configurationAttributes": {
+          "launch": {
+            "required": ["program"],
+            "properties": {
+              "program": {
+                "type": "string",
+                "description": "Absolute path to the program",
+                "default": "${workspaceFolder}/sandbox.exe"
+              }
+            }
+          } 
+        },
+        "initialConfigurations": [
+          {
+            "type": "ldbg",
+            "request": "launch",
+            "name": "ldbg Launch",
+            "program": "${workspaceFolder}/sandbox.exe"
+          }
+        ],
+        "configurationSnippets": [
+          {
+            "label": "ldbg: Launch",
+            "description": "A new configuration for launching ELENA debug program",
+            "body": {
+              "type": "ldbg",
+              "request": "launch",
+              "name": "${2:Launch Program}",
+              "program": "^\"\\${workspaceFolder}/${1:Program}\""
+            }
+          }
+        ]
+      }
+    ],
     "menus": {
+      "editor/title/run": [
+        {
+          "command": "elena.BuildAndDebugFile",
+          "when": "editorLangId == elena",
+          "group": "navigation@0"
+        },
+        {
+          "command": "elena.BuildAndRunFile",
+          "when": "editorLangId == elena",
+          "group": "navigation@1"
+        }
+      ],
       "commandPalette": [
         {
-          "command": "elena.compileSingleFile",
+          "command": "elena.BuildAndDebugFile",
           "when": "editorLangId == elena"
         },
         {
-          "command": "elena.compileProject",
+          "command": "elena.BuildAndRunFile",
           "when": "editorLangId == elena"
         }
       ] 
@@ -92,8 +149,8 @@
   "activationEvents": [
     "workspaceContains:**/*.l",
     "onLanguage:elena",
-    "onCommand:elena.compileSingleFile",
-    "onCommand:elena.compileProject"
+    "onDebugResolve:ldbg",
+    "onDebugDynamicConfigurations:ldbg"
   ],
   "main": "./dist/main.js",
   "devDependencies": {

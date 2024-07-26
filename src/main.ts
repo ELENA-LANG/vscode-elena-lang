@@ -10,7 +10,7 @@ export async function activate(context: vscode.ExtensionContext) : Promise<void>
     output.appendLine("Starting ELENA vscode extension..");
 
     // Initialize the DebuggerExtension and register the related commands and providers.
-    await DebuggerExtension.initialize(context);	
+    await DebuggerExtension.initialize(context, output);	
 }
 
 export function deactivate(): void {

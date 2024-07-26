@@ -5,4 +5,5 @@ export enum DebuggerType {
 }
 
 export interface LDebugConfiguration extends vscode.DebugConfiguration {
+   
 }
