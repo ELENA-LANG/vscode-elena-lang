@@ -1,20 +1,181 @@
 {
 	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
 	"name": "ELENA",
+        "scopeName": "source.elena",
+        "fileTypes": [".l"],
 	"patterns": [
 		{
+			"include": "#comments"
+		},
+		{
 			"include": "#keywords"
+		},
+		{
+			"include": "#brackets"
+		},
+		{
+			"include": "#numbers"
+		},
+		{
+			"include": "#operators"
 		},
 		{
 			"include": "#strings"
 		}
 	],
 	"repository": {
+		"comments": {
+			"patterns": [
+				{
+					"name": "comment.block.documentation.elena",
+					"begin": "/\\*",
+					"beginCaptures": {
+						"0": {
+							"name": "punctuation.definition.comment.begin.elena"
+						}
+					},
+					"end": "\\*/",
+					"endCaptures": {
+						"0": {
+							"name": "punctuation.definition.comment.end.elena"
+						}
+					},
+					"patterns": [
+						{
+							"include": "#comments"
+						}
+					]
+				},
+				{
+					"name": "comment.line.double-slash.elena",
+					"begin": "//",
+					"beginCaptures": {
+						"0": {
+							"name": "punctuation.definition.comment.begin.elena"
+						}
+					},
+					"end": "$"
+				}
+			]
+		},
+		"operators": {
+			"patterns": [
+				{
+					"name": "keyword.operator.arithmetic.elena",
+					"match": "(\\+|\\-|\\*|\\/|\\+\\+|\\-\\-)"
+				},
+				{
+					"name": "keyword.operator.relation.v",
+					"match": "(\\=\\=|\\!\\=|\\>|\\<|\\>\\=|\\<\\=)"
+				},
+				{
+					"name": "keyword.operator.assignment.v",
+					"match": "(\\:\\=|\\=|\\+\\=|\\-\\=|\\*\\=|\\&\\=|\\|\\=|\\)"
+				},
+				{
+					"name": "keyword.operator.bitwise.elena",
+					"match": "(\\&|\\||\\~)"
+				},
+				{
+					"name": "keyword.operator.return.elena",
+					"match": "(\\^)"
+				},
+				{
+					"name": "keyword.operator.optional.elena",
+					"match": "(\\?|\\!)"
+				}
+			]
+		},
 		"keywords": {
 			"patterns": [{
 				"name": "keyword.control.elena",
-				"match": "\\b(if|while|for|return)\\b"
+				"match": "\\b(abstract|auto|class|const|extern|for|if|indexed|interface|private|protected|public|sealed|singleton|static|struct|symbol|template|var|while)\\b"
 			}]
+		},
+		"brackets": {
+			"patterns": [
+				{
+					"begin": "{",
+					"beginCaptures": {
+						"0": {
+							"name": "punctuation.definition.bracket.curly.begin.elena"
+						}
+					},
+					"end": "}",
+					"endCaptures": {
+						"0": {
+							"name": "punctuation.definition.bracket.curly.end.elena"
+						}
+					},
+					"patterns": [
+						{
+							"include": "$self"
+						}
+					]
+				},
+				{
+					"begin": "\\(",
+					"beginCaptures": {
+						"0": {
+							"name": "punctuation.definition.bracket.round.begin.elena"
+						}
+					},
+					"end": "\\)",
+					"endCaptures": {
+						"0": {
+							"name": "punctuation.definition.bracket.round.end.elena"
+						}
+					},
+					"patterns": [
+						{
+							"include": "$self"
+						}
+					]
+				},
+				{
+					"begin": "\\[",
+					"beginCaptures": {
+						"0": {
+							"name": "punctuation.definition.bracket.square.begin.elena"
+						}
+					},
+					"end": "\\]",
+					"endCaptures": {
+						"0": {
+							"name": "punctuation.definition.bracket.square.end.elena"
+						}
+					},
+					"patterns": [
+						{
+							"include": "$self"
+						}
+					]
+				}
+			]
+		},
+		"numbers": {
+			"patterns": [
+				{
+					"name": "constant.numeric.exponential.elena",
+					"match": "([0-9]+)(\\.)([0-9]+[eE][-+]?[0-9]+)"
+				},
+				{
+					"name": "constant.numeric.float.elena",
+					"match": "([0-9]+)(\\.)([0-9]+)"
+				},
+				{
+					"name": "constant.numeric.hex.elena",
+					"match": "([0-9][0-9a-fA-F]*)h"
+				},
+				{
+					"name": "constant.numeric.unassigned.elena",
+					"match": "([0-9]+)u"
+				},
+				{
+					"name": "constant.numeric.integer.elena",
+					"match": "[0-9]+"
+				}
+			]
 		},
 		"strings": {
 			"name": "string.quoted.double.elena",
