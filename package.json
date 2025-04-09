@@ -77,7 +77,7 @@
         ],
         "label": "ELENA Debugger",
         "windows": {
-          "program": "C:/Alex/elena-lang/bin/elena-dpa.exe"
+          "program": "C:/Alex/elena-lang/bin/elena-dap.exe"
         },
         "configurationAttributes": {
           "launch": {

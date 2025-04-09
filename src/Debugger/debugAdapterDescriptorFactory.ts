@@ -21,10 +21,9 @@ export class LdbgDebugAdapterDescriptorFactory extends AbstractDebugAdapterDescr
 
         // use the executable specified in the package.json if it exists or determine it based on some other information (e.g. the session)
 //        if (!executable) {
-            const command = "C:/Alex/elena-lang/bin/elena-dpa.exe";
+            const command = "C:/Alex/elena-lang/bin/elena-dap.exe";
             const args = [
-               "some args",
-               "another arg"
+               "sandbox.l"
             ];
             const options = {
                cwd: "C:/Alex/elena-lang/tests60/sandbox",
